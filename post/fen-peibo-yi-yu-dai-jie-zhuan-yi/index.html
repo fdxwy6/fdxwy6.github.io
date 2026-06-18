@@ -1,0 +1,255 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.1.1">
+<title>分配、博弈与代价转移 | 静默的河流</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1781766484">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="分配、博弈与代价转移 | 静默的河流 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="思考" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="最近而Z讨论地方债、房地产等经济话题，我说：这些问题都是表象，过剩的生产价值剩余和微薄的居民获得之间的钱不见了。分配问题，是一个在房间里不断长大的大象，却都看不到或奖状看不到。 很多看似复杂的人际矛盾、社会矛盾、群体矛盾，如果不断向下拆解，最后都会落到一个非常朴素的问题上： 分配 资源如何分配。 责任如何分配。 收益如何分配。 代价如何分配。 而人与人的关系，本质上就是围绕这些内&amp;hellip;">
+<link rel="canonical" href="https://yes.iamwv.com/post/fen-peibo-yi-yu-dai-jie-zhuan-yi/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"分配、博弈与代价转移","url":"https://yes.iamwv.com/post/fen-peibo-yi-yu-dai-jie-zhuan-yi/","description":"最近而Z讨论地方债、房地产等经济话题，我说：这些问题都是表象，过剩的生产价值剩余和微薄的居民获得之间的钱不见了。分配问题，是一个在房间里不断长大的大象，却都看不到或奖状看不到。 很多看似复杂的人际矛盾、社会矛盾、群体矛盾，如果不断向下拆解，最后都会落到一个非常朴素的问题上： 分配 资源如何分配。 责任如何分配。 收益如何分配。 代价如何分配。 而人与人的关系，本质上就是围绕这些内\u0026hellip;","datePublished":"2026-06-18T14:19:53+08:00","dateModified":"2026-06-18T14:19:53+08:00","author":{"@type":"Person","name":"静默的河流"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"静默的河流"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yes.iamwv.com","name":"静默的河流","position":1},{"@type":"ListItem","item":"https://yes.iamwv.com/post/fen-peibo-yi-yu-dai-jie-zhuan-yi/","name":"分配、博弈与代价转移","position":2}]}</script>
+<meta property="og:title" content="分配、博弈与代价转移">
+<meta property="og:description" content="最近而Z讨论地方债、房地产等经济话题，我说：这些问题都是表象，过剩的生产价值剩余和微薄的居民获得之间的钱不见了。分配问题，是一个在房间里不断长大的大象，却都看不到或奖状看不到。 很多看似复杂的人际矛盾、社会矛盾、群体矛盾，如果不断向下拆解，最后都会落到一个非常朴素的问题上： 分配 资源如何分配。 责任如何分配。 收益如何分配。 代价如何分配。 而人与人的关系，本质上就是围绕这些内&amp;hellip;">
+<meta property="og:url" content="https://yes.iamwv.com/post/fen-peibo-yi-yu-dai-jie-zhuan-yi/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="静默的河流">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://yes.iamwv.com/post/fen-peibo-yi-yu-dai-jie-zhuan-yi/">
+<meta name="twitter:title" content="分配、博弈与代价转移">
+<meta name="twitter:description" content="最近而Z讨论地方债、房地产等经济话题，我说：这些问题都是表象，过剩的生产价值剩余和微薄的居民获得之间的钱不见了。分配问题，是一个在房间里不断长大的大象，却都看不到或奖状看不到。 很多看似复杂的人际矛盾、社会矛盾、群体矛盾，如果不断向下拆解，最后都会落到一个非常朴素的问题上： 分配 资源如何分配。 责任如何分配。 收益如何分配。 代价如何分配。 而人与人的关系，本质上就是围绕这些内&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="静默的河流">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/icons/icon-192x192.png">
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1781766484" alt="">
+    </a>
+    <h1 class="site-title">
+        静默的河流
+    </h1>
+    <p class="site-description">
+        一个 10 bit/s 带宽的人类，正在记录宇宙的灰尘。
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="https://lens.iamwv.com" class="menu">
+            相册
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        分配、博弈与代价转移
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2026-06-18
+                        </span>
+                        <span>
+                            3 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/si-kao/" class="post-tag">
+                            # 思考
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <p>最近而Z讨论地方债、房地产等经济话题，我说：这些问题都是表象，过剩的生产价值剩余和微薄的居民获得之间的钱不见了。分配问题，是一个在房间里不断长大的大象，却都看不到或奖状看不到。</p>
+<p>很多看似复杂的人际矛盾、社会矛盾、群体矛盾，如果不断向下拆解，最后都会落到一个非常朴素的问题上：</p>
+<h1 id="heading"><strong>分配</strong></h1>
+<p>资源如何分配。<br />
+责任如何分配。<br />
+收益如何分配。<br />
+代价如何分配。</p>
+<p>而人与人的关系，本质上就是围绕这些内容展开的博弈与共识过程。</p>
+<h1 id="heading-1">一、社交关系本质上是一种博弈</h1>
+<p>无论是社会公开关系，如同学、邻居、同事；还是私密社会关系，家庭成员、夫妻、公婆丈岳；又或者是个体与群体，集体与集体间的社会关系，本质都一种博弈，是双方对于资源和价值交换达成了某种共识，在不断追求最大公约数的博弈。</p>
+<p>因此社交关系既是合作过程，也是博弈过程。</p>
+<p>每个客体都在争取：</p>
+<ul>
+<li>更多收益；</li>
+<li>更少代价；</li>
+<li>更高地位；</li>
+<li>更大的影响力；<br />
+<strong>只不过有的人用利益交换，有的人用情感交换，有的人用权力交换。</strong></li>
+</ul>
+<p>所以人与人的关系并非永远温情脉脉。<br />
+它既有合作的一面，也有斗争的一面。<br />
+很多所谓矛盾，本质上只是双方对资源分配比例产生了分歧。</p>
+<h1 id="heading-2">二、人们会把习惯得到的东西视为空气</h1>
+<p>我前段时间听到一个梗。问一个人：活着最重要的是什么？他说：食物。然后掐住他脖子半分钟。他立刻意识到：原来空气更重要。<br />
+这个梗虽然夸张，也在我身上发生过，出公差时候，我自费请十余人喝可乐，一人批评：“就喝个可乐，档次也太低了。”我让他：“你别喝了。”<br />
+这些是反映了一个很有意思的现象：</p>
+<p>人往往不会珍惜一直存在的东西。因为长期拥有，所以习以为常。因为习以为常，所以视若空气。空气最重要，但也是最容易被忽略的。<br />
+在关系中也是如此。<br />
+长期付出的人容易被视为理所当然。长期承担责任的人容易被默认继续承担。长期解决问题的人容易被认为问题本来就不存在。因为人们看到的是结果，而不是成本。<br />
+所以很多时候，适当让别人意识到：某些东西并非天然存在。某些收益背后有人承担代价。未必是坏事。否则长期稳定提供价值的人，反而最容易被忽视。</p>
+<h1 id="heading-3">三、间接税与代价转移</h1>
+<p>经济学里有个概念叫间接税。<br />
+很多人看不见税，认为自己不用纳税，也没有纳税义务（某超市因小票写含税，竟被举报到倒闭），看不见、看不清楚但并不意味着不存在。<br />
+它只是被转移到了商品价格、服务价格和生活成本之中。<br />
+现实中很多事情也是如此。真正高明的利益获取方式，往往不是直接索取。而是进行代价转移。把原本属于自己的成本：转移给别人承担；把原本属于自己的责任：转移给别人负责；把原本属于自己的风险：转移给别人消化。<br />
+这样获得收益的人感觉不到痛苦。承担成本的人却在持续付出。很多社会现象、组织现象、人际现象，都能从代价转移的角度得到解释。</p>
+<h1 id="heading-4">四、奖励先进，本质上也是惩罚落后</h1>
+<p>谈及人口出生率时，一群友说为什么不对不结婚生孩子的进行罚款收税，我答：“已经收了，对生育缓解进行额外的财政补贴，以及直接发放300元*24月的现金补贴，本质就是对未婚无生育的群体的征税，只是以补贴的面貌出现了。”</p>
+<p>资源总是有限的。<br />
+因此任何奖励机制都不可能凭空创造资源。奖励一个人。意味着资源向他倾斜。那么资源就必然从其他地方流出。因此：奖励先进，在某种意义上也是惩罚落后；扶持一部分人，也意味着另一部分人获得更少资源；照顾一个群体，也意味着其他群体能够分到的份额减少。<br />
+这并不一定是错误的。<br />
+只是说明：任何分配方案都存在机会成本。获得与失去往往同时发生。只是有人看到获得，却看不到对应的失去。</p>
+<h1 id="heading-5">五、许多问题最终都是分配问题观察很多争论。</h1>
+<p>家庭矛盾、职场矛盾、群体矛盾、阶层矛盾、社会矛盾。甚至国家治理中的许多问题，如果不断追问下去，经常会发现最终都会回到同一个问题：谁获得收益？谁承担代价？谁掌握资源？谁决定分配？</p>
+<p>表面上争的是道德、观念、立场、身份，深层往往争的是资源和利益。<br />
+因此许多社会问题的核心并不是生产问题，而是分配问题，不是总量问题，而是份额问题，不是有没有，而是谁得到，得到多少。</p>
+<h1 id="heading-6">六、总结</h1>
+<p>某次情感咨询上，我回复：如果你女朋友什么也不做，只会事后批评你的决策，而且也不付出劳动和代价，那么就让她滚。因为这是一种婊子思维，只享受、不负责，实际上是把所有代价转移给了你。</p>
+<p>人与人的关系是围绕资源、价值与代价展开的博弈和共识过程；而许多个体问题、群体问题乃至社会问题，最终都会落到分配问题上——谁获益，谁付出，谁承担成本，谁决定规则。<br />
+这个视角未必能解释一切，但它能够解释很多现象，因为在绝大多数时候，人们争论的并非抽象概念本身。</p>
+<p>而是<strong>抽象概念背后所对应的现实利益</strong>。</p>
+<h6 id="heading-7">《博弈论》</h6>
+<p>博弈论是二人在平等的对局中各自利用对方的策略变换自己的对抗策略，达到取胜的目的。 [1]博弈论思想古已有之，中国古代的《孙子兵法》等著作就不仅是一部军事著作，而且算是最早的一部博弈论著作。博弈论最初主要研究象棋、桥牌、赌博中的胜负问题，人们对博弈局势的把握只停留在经验上，没有向理论化发展。</p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/chang-huai-jing-wei-zhi-xinduo-neng-bi-nan-zhi-huo/">
+                    <h3 class="post-title">
+                        常怀敬畏之心，多能避难止祸
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    I could be bounded in a nutshell and count myself a king of infinite space.
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.1.1 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>
