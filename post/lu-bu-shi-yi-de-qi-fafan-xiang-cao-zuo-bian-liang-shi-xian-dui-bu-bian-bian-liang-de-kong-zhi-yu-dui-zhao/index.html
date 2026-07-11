@@ -1,0 +1,218 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>路不拾遗的启发：反向操作变量实现对不变变量的控制与对照 | 静默的河流</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1783736578">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/rss+xml" title="路不拾遗的启发：反向操作变量实现对不变变量的控制与对照 | 静默的河流 - RSS Feed" href="/feed.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="思考" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <meta name="description" content="衣服落在公园过一夜，路边掉个什么东西，车篮里放个什么东西，只要尽快回去招，基本都还在原地 是仓廪实而知礼节，衣食足而知荣辱吗？是。 说明物质生活得到了极大地满足，感谢所有人类创造的生产力进步。 但是？ 也许并非只是人的道德水平高了？ 而是获得的收益小于了被发现的“丢人”？ 所以，本质上是，不值得这么做了，而不是，真彻底摒弃了。 这也是种很好的治国思路，而且已经现有成效了？ 我想： &amp;hellip;">
+<link rel="canonical" href="https://yes.iamwv.com/post/lu-bu-shi-yi-de-qi-fafan-xiang-cao-zuo-bian-liang-shi-xian-dui-bu-bian-bian-liang-de-kong-zhi-yu-dui-zhao/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"路不拾遗的启发：反向操作变量实现对不变变量的控制与对照","url":"https://yes.iamwv.com/post/lu-bu-shi-yi-de-qi-fafan-xiang-cao-zuo-bian-liang-shi-xian-dui-bu-bian-bian-liang-de-kong-zhi-yu-dui-zhao/","description":"衣服落在公园过一夜，路边掉个什么东西，车篮里放个什么东西，只要尽快回去招，基本都还在原地 是仓廪实而知礼节，衣食足而知荣辱吗？是。 说明物质生活得到了极大地满足，感谢所有人类创造的生产力进步。 但是？ 也许并非只是人的道德水平高了？ 而是获得的收益小于了被发现的“丢人”？ 所以，本质上是，不值得这么做了，而不是，真彻底摒弃了。 这也是种很好的治国思路，而且已经现有成效了？ 我想： \u0026hellip;","datePublished":"2026-07-11T10:06:01+08:00","dateModified":"2026-07-11T10:06:01+08:00","author":{"@type":"Person","name":"静默的河流"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"静默的河流"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yes.iamwv.com","name":"静默的河流","position":1},{"@type":"ListItem","item":"https://yes.iamwv.com/post/lu-bu-shi-yi-de-qi-fafan-xiang-cao-zuo-bian-liang-shi-xian-dui-bu-bian-bian-liang-de-kong-zhi-yu-dui-zhao/","name":"路不拾遗的启发：反向操作变量实现对不变变量的控制与对照","position":2}]}</script>
+<meta property="og:title" content="路不拾遗的启发：反向操作变量实现对不变变量的控制与对照">
+<meta property="og:description" content="衣服落在公园过一夜，路边掉个什么东西，车篮里放个什么东西，只要尽快回去招，基本都还在原地 是仓廪实而知礼节，衣食足而知荣辱吗？是。 说明物质生活得到了极大地满足，感谢所有人类创造的生产力进步。 但是？ 也许并非只是人的道德水平高了？ 而是获得的收益小于了被发现的“丢人”？ 所以，本质上是，不值得这么做了，而不是，真彻底摒弃了。 这也是种很好的治国思路，而且已经现有成效了？ 我想： &amp;hellip;">
+<meta property="og:url" content="https://yes.iamwv.com/post/lu-bu-shi-yi-de-qi-fafan-xiang-cao-zuo-bian-liang-shi-xian-dui-bu-bian-bian-liang-de-kong-zhi-yu-dui-zhao/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="静默的河流">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://yes.iamwv.com/post/lu-bu-shi-yi-de-qi-fafan-xiang-cao-zuo-bian-liang-shi-xian-dui-bu-bian-bian-liang-de-kong-zhi-yu-dui-zhao/">
+<meta name="twitter:title" content="路不拾遗的启发：反向操作变量实现对不变变量的控制与对照">
+<meta name="twitter:description" content="衣服落在公园过一夜，路边掉个什么东西，车篮里放个什么东西，只要尽快回去招，基本都还在原地 是仓廪实而知礼节，衣食足而知荣辱吗？是。 说明物质生活得到了极大地满足，感谢所有人类创造的生产力进步。 但是？ 也许并非只是人的道德水平高了？ 而是获得的收益小于了被发现的“丢人”？ 所以，本质上是，不值得这么做了，而不是，真彻底摒弃了。 这也是种很好的治国思路，而且已经现有成效了？ 我想： &amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="静默的河流">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/icons/icon-192x192.png">
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>
+</head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://yes.iamwv.com">
+  <img class="avatar" src="https://yes.iamwv.com/images/avatar.png?v=1783736578" alt="">
+  </a>
+  <h1 class="site-title">
+    静默的河流
+  </h1>
+  <p class="site-description">
+    I could be bounded in a nutshell and count myself a king of infinite space.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://lens.iamwv.com" class="menu">
+          相册
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              路不拾遗的启发：反向操作变量实现对不变变量的控制与对照
+            </h2>
+            <div class="post-info">
+              <span>
+                2026-07-11
+              </span>
+              <span>
+                1 分钟阅读
+              </span>
+              
+                <a href="/tag/si-kao/" class="post-tag">
+                  # 思考
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>衣服落在公园过一夜，路边掉个什么东西，车篮里放个什么东西，只要尽快回去招，基本都还在原地</p>
+<p>是仓廪实而知礼节，衣食足而知荣辱吗？是。</p>
+<p>说明物质生活得到了极大地满足，感谢所有人类创造的生产力进步。</p>
+<p>但是？</p>
+<p>也许并非只是人的道德水平高了？</p>
+<p>而是获得的收益小于了被发现的“丢人”？</p>
+<p>所以，本质上是，不值得这么做了，而不是，真彻底摒弃了。</p>
+<p>这也是种很好的治国思路，而且已经现有成效了？</p>
+<p>我想：</p>
+<p>如果A不能改变，那就把大于A的B，降低到B小于A。</p>
+<p>好比说，第一条线长1米，叫风险，第二条线长2米，叫收益，此时需要让第一条线大于第二条线，实现“道德”效果。</p>
+<p>如果不好调整第一条线的长度，即增大代价和风险，那么调整第二条线，只有半米，就实现了第一条线大于第二条线的效果。让冒险获得的收益，小于风险，这样人在权衡利弊之下，就不会再去冒险僭越法律与道德了。</p>
+<p>泛化开来，不止是社会国家治理。如果把他放到工作中，那么就可以通过提要条、加筹码等方式，来提高他人对自己不合理安排的代价与门槛，实现委婉决绝推却的效果。</p>
+<p>放到人际关系，如果家庭需要个人承担什么权责失衡的、不合理的责任义务，却得不到相应的回报甚至说尊重时，那么就可以如此反向执行，提供出很少的收益，或者需要二次转化加工的产出，迫使提高对方的调度成本和获利效率，如此提高自身在人际关系种的地位和尊严。</p>
+<p>放到两性亲密关系，如果双方缺少尊重理解，那么就减少供应，实际上，在之前我也是这么做的，不过这种看似封闭，实则开放性的“亲密关系”中，很容易因为自身供应的动态调整，导致对方主动引入外部变量，导致博弈的失败。但是对方不能尊重亲密关系，主动引入外部变量，那么也不是一个值得继续交往的伴侣，此时整体来看，减少对方的收益，仍然是一件对我方有益的事。</p>
+<p>总结，就是，当想要在多个紧密链接对照的客体或者抽象概念之间，通过不变动、无法变动A的情况下，我们可以采取反向操作，通过反向调整B，来实现与A相对应的增减，形成A视角下与B对应的相反性的控制与变化。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="/post/cmshu-xin-6/">
+              <h3 class="post-title">
+                C&amp;M书信6
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  May you find your worth in the weaking world .
+  <a class="rss" href="/feed.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: notes v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>
