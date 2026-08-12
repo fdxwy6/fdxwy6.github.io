@@ -1,5 +1,5 @@
 // Gridea Pro PWA Service Worker
-var CACHE_NAME = 'gridea-v1786532163';
+var CACHE_NAME = 'gridea-v1786548930';
 var OFFLINE_URL = '/offline.html';
 
 // 安装：预缓存离线页面
